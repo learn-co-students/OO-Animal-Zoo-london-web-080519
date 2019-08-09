@@ -8,6 +8,11 @@ class Zoo
         @name = name
         @location = location
         @@all << self
+        
+        #at initialize, the zoo needs to make some animals
+        #animal can only be in one zoo
+        Animal.new("nickname", "species", 0)
+        #^^need to set this to an @ (somehow?)
     end
 
     def location
@@ -46,7 +51,7 @@ class Zoo
 
     def self.find_by_location(location)
         #return array of all the zoos in that location
-        self.all.select { |place| place.location == location }
+        @@all.select { |place| place.location == location }
      
     end
 
