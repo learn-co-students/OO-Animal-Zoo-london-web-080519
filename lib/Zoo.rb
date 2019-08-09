@@ -24,8 +24,8 @@ def self.all
     return @@all
 end
 
-def find_by_location(location)
-    self.all.select{|zoo|zoo.location == self }
+def self.find_by_location(location)
+    all.select{|zoo|zoo.location == location }
 end 
 
 
@@ -42,8 +42,6 @@ end
 def animal_species
     self.animals.map {|animal|animal.species.uniq}
 end
-
-
 
 
 end 
