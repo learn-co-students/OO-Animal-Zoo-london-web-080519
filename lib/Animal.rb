@@ -3,7 +3,7 @@ attr_reader :name, :species
 attr_accessor :weight, :zoo
 
 @@all = []
-def initialize(species, nickname, weight, zoo)
+def initialize(species:, nickname:, weight:, zoo:)
     @species = species
     @nickname = nickname
     @weight = weight
