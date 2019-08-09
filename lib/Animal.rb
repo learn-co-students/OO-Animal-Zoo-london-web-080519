@@ -1,3 +1,24 @@
 class Animal
+    attr_reader :species, :nickname
+    attr_accessor :weight, :zoo
+
+    @@all = []
+
+    def initialize(species:, nickname:, weight:, zoo:)
+        @species = species
+        @nickname = nickname
+        @weight = weight
+        @zoo = zoo
+
+        @@all << self
+    end
+
+    def self.all
+        @@all
+    end
+
+    def self.find_by_species(species)
+        self.all.select{|animal| animal.species.downcase == species.downcase}
+    end
 
 end
