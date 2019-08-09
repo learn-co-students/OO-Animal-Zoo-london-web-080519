@@ -5,7 +5,7 @@ class Animal
     attr_reader :nickname, :species
     attr_accessor :weight
 
-    def initialize(nickname:, species:, weight:)
+    def initialize(nickname, species, weight)
         @nickname = nickname
         @species = species
         @weight = weight
@@ -24,7 +24,7 @@ class Animal
         @weight
     end
 
-    def all
+    def self.all
         #array of all animal instances
         @@all
     end
@@ -34,8 +34,10 @@ class Animal
         Zoo.all.select {|zoo| }
     end
 
-    def find_by_species(species)
+    def find_by_species(species)    
+        ##self.find_by_species doesn't work - doesn't specify class method, is this better?
         #array of all the animals of this species
+        @@all.select {|species| self.species }
     end
 
 
