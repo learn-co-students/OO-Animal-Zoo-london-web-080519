@@ -34,12 +34,10 @@ def animal_nicknames
 end 
 
 def find_by_species(species)
-    self.animals.map do |animal| animal.species == species 
-        return animal
-    end
-    
-    
+    self.animals.select {|animal| animal.species == species}
 end
+    
+
 
 def animal_species
     self.animals.map {|animal|animal.species.uniq}
