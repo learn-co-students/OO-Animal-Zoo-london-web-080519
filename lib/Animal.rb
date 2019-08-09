@@ -3,12 +3,12 @@ attr_reader :name, :species
 attr_accessor :weight, :zoo
 
 @@all = []
-def initialize(species, weight, nickname)
+def initialize(species, nickname, weight, zoo)
     @species = species
-    @weight = weight 
-    @nickname = nickname 
+    @nickname = nickname
+    @weight = weight
     @zoo = zoo
-    @@all << self
+     @@all << self
 end
 
 def self.all
