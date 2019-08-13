@@ -4,55 +4,38 @@ class Zoo
 
     attr_reader :name, :location
 
-    def initialize(name, location)
+    def initialize(name:, location:)
         @name = name
         @location = location
         @@all << self
-        
-        #at initialize, the zoo needs to make some animals
-        #animal can only be in one zoo
-        Animal.new("nickname", "species", 0)
-        #^^need to set this to an @ (somehow?)
     end
 
-    def location
-        #location of the zoo instance
-        @location
-    end
-
-    def name
-        #name of the zoo instance
-        @name 
-    end
 
     def self.all
         #array of the zoo instances
         @@all
     end
 
+    def animals 
+        Animal.all.select {|animal| animal.zoo == self}
+     end
+
     def animal_species
         #array of all the animals's species in this instance of zoo
-    #    Animal.all.select {|findanimal| findanimal == species}
-        Animal.all.map {|animal| animal.species }
-        #select?
+        self.animals.map {|animal| animal.species } #seed data chains these (drake examples)
     end
 
     def find_by_species(species)
-        #array of all the animals in this instance of zoo, with that species
-        # .find
-        Animal.all.find { |animal|  animal.species == species }
-    
+         self.animals.find {|animal| animal.species == species }
     end
 
     def animal_nicknames
-        #return array of all the nicknames of all animals in this instance fo zoo
-        Animal.all.map{|animal| animal.nickname}
+        #return array of all the nicknames of all animals in this instance of zoo
+        self.animals.map{|animal| animal.nickname}
     end
 
     def self.find_by_location(location)
-        #return array of all the zoos in that location
-        @@all.select { |place| place.location == location }
-     
+        self.all.select { |place| place.location == location }
     end
 
 
